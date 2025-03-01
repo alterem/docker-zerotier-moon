@@ -1,7 +1,6 @@
-FROM alpine:latest
+FROM debian:latest
 
-RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/v$(cut -d '.' -f 1,2 /etc/alpine-release)/community" >> /etc/apk/repositories
-RUN apk update && apk add zerotier-one
+RUN apt update && curl -s https://install.zerotier.com | bash
 
 RUN zerotier-cli info
 
