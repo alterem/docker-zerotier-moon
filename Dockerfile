@@ -1,7 +1,5 @@
 FROM alpine:latest
 
-RUN apk update && apk add --no-cache curl bash
-
 RUN apk update && apk add zerotier-one
 
 RUN zerotier-cli info
