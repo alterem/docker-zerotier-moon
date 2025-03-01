@@ -1,7 +1,8 @@
-FROM alpine:3.21
+FROM alpine:latest
+
+RUN apk update && apk add --no-cache curl bash
 
 RUN curl -sL https://packagecloud.io/install/repositories/zerotier/zerotier/script.deb.sh | bash && apk update && apk add zerotier-one
-
 
 RUN zerotier-cli info
 
