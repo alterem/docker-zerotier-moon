@@ -1,12 +1,8 @@
 FROM alpine:3.21
 
-# Install necessary packages
-RUN apk add --no-cache curl
+RUN apk add --no-cache bash curl \
+    && curl -s https://install.zerotier.com | bash
 
-# Download and install ZeroTier
-RUN curl -s https://install.zerotier.com | bash
-
-# Verify installation
 RUN zerotier-cli info
 
 COPY startup.sh /startup.sh
