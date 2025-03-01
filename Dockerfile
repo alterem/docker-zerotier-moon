@@ -2,7 +2,12 @@ FROM alpine:latest
 
 RUN apk update && apk add --no-cache curl bash
 
-RUN curl -s https://install.zerotier.com | bash && apk update && apk add zerotier-one
+# Separate the commands to identify the failure point
+RUN curl -s https://install.zerotier.com -o install-zerotier.sh && \
+    chmod +x install-zerotier.sh && \
+    ./install-zerotier.sh || (cat install-zerotier.sh && exit 1)
+
+RUN apk update && apk add zerotier-one
 
 RUN zerotier-cli info
 
