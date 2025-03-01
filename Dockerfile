@@ -1,12 +1,12 @@
-ARG ALPINE_VERSION=edge
+ARG ALPINE_VERSION=3.21.3
 
 FROM alpine:${ALPINE_VERSION}
 
-ARG ZT_VERSION=1.8.4-r0
+ARG ZEROTIER_ONE_VERSION=1.14.2
 
-LABEL maintainer="seedgou <seedgou@gmail.com>"
+LABEL maintainer="alterem <alterem520@gmail.com>"
 
-RUN apk add --no-cache zerotier-one=${ZT_VERSION}
+RUN apk add --no-cache zerotier-one=${ZEROTIER_ONE_VERSION}
 
 COPY startup.sh /startup.sh
 EXPOSE 9993/udp
